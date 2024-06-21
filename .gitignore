@@ -1,0 +1,13 @@
+# Dev files
+bin
+
+# NPM
+node_modules
+
+# Config files
+*.json
+
+# Dev build
+src
+
+
