@@ -5,9 +5,7 @@ bin
 node_modules
 
 # Config files
-*.json
+package*
 
-# Dev build
-src
 
 
