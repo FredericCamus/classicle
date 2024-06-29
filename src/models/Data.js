@@ -1,5 +1,5 @@
+// Imports
 var m = require("mithril")
-
 
 // Get n works, prioritising popular works
 function get_works(works, n) {
@@ -17,7 +17,7 @@ var Data = {
     portrait: "",
     works: [],
     loadList: function() {
-        fetch('data.json')
+        fetch('./assets/data.json')
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network error: ' + response.statusText);
