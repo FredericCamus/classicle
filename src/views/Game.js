@@ -3,15 +3,19 @@ var m = require("mithril");
 var t = require("tom-select");
 var Data = require("../models/Data");
 
+const confetti = require("canvas-confetti").default;
+
 let app = {
     state: {
         past_guess: [...Array(6).keys()].map(id => ""),
-        guess_number: 0
+        guess_number: 0,
+        complete: false
     },
     current_guess: "",
     data_set: false,
     oninit: Data.loadList,
     view: function(vnode) {
+        console.log(Data.complete_name);
         let name = m(".card", {id: "card_name"}, m(".card-content", {id: "content_name"},
             m("h1", Data.complete_name)));
         let clue_pieces = m(".card", {id: "card_pieces"}, m(".card-content", {id: "content_pieces"}, [
@@ -48,7 +52,7 @@ let app = {
                 // Get select element
                 let select_element = document.getElementById('composer-select');
                 let current_guess = select_element.form.innerText.split("\n")[0];
-                if (!app.state.past_guess.includes(current_guess) && current_guess != "⨯") {
+                if (!app.state.past_guess.includes(current_guess) && current_guess != "⨯" && app.state.guess_number < 6) {
                     let guess_number = app.state.guess_number;
                     var label = document.getElementById("label" + guess_number);
                     var label_num = document.getElementById("label_num" + guess_number);
@@ -61,27 +65,13 @@ let app = {
                         label.classList.toggle('correct'); 
                         label_num.classList.toggle('correct'); 
                         document.getElementById("content_name").style.opacity = 1;
+                        app.state.complete = true;
                     }
 
                     // Update game state
                     app.current_guess = current_guess;
                     app.state.past_guess[guess_number] = current_guess;
                     app.state.guess_number += 1;
-
-                    // Show game clues
-                    if (app.state.guess_number >= 1) {
-                        document.getElementById("content_birth").style.opacity = 1;
-                    }
-                    if (app.state.guess_number >= 2) {
-                        document.getElementById("content_pieces").style.opacity = 1;
-                    }
-                    if (app.state.guess_number >= 3) {
-                        document.getElementById("content_portrait").style.opacity = 1;
-                    }
-                    if (Data.complete_name == current_guess || app.state.guess_number >= 6) {
-                        document.getElementById("content_name").style.opacity = 1;
-                    }
-
                 }
 
             }}, m(".container_form", [select, button]));
@@ -111,6 +101,28 @@ let app = {
                 }
             });
             app.data_set = true;
+        }
+
+        // Show game clues based on game state
+        if (app.state.complete || app.state.guess_number >= 1) {
+            document.getElementById("content_birth").style.opacity = 1;
+        }
+        if (app.state.complete || app.state.guess_number >= 2) {
+            document.getElementById("content_pieces").style.opacity = 1;
+        }
+        if (app.state.complete || app.state.guess_number >= 3) {
+            document.getElementById("content_portrait").style.opacity = 1;
+        }
+        if (app.state.complete || app.state.guess_number >= 6) {
+            document.getElementById("content_name").style.opacity = 1;
+            app.state.complete = true;
+        }
+        if (app.state.complete) {
+            confetti({
+              particleCount: 100,
+              spread: 70,
+              origin: { y: 0.6 }
+            });
         }
     }
 }

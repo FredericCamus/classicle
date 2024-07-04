@@ -92,6 +92,7 @@ button {
     color: #333;
     display: inline-block;
     min-width: 100%;
+    margin-left: 5px;
 }
 
 button:hover {

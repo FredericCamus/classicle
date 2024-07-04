@@ -1,5 +1,5 @@
 // Imports
 var m = require("mithril");
-var UserList = require("./views/Game");
+var Game = require("./views/Game");
 
-m.mount(document.body, UserList);
+m.mount(document.body, Game);
