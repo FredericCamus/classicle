@@ -7,17 +7,23 @@ const confetti = require("canvas-confetti").default;
 
 let app = {
     state: {
+        game_index: -1,
         past_guess: [...Array(6).keys()].map(id => ""),
         guess_number: 0,
         complete: false
     },
+    history: [],
     current_guess: "",
     data_set: false,
-    oninit: function(vnode) {
+    celebration: false,
+    oninit(vnode) {
+        
+        // Load Data model (composer of the day information)
         Data.loadList();
-        app.state = JSON.parse(localStorage.getItem("state"));
-        console.log(app.state);
-        m.redraw();
+        
+        // Calculate current game_index
+        const date = new Date();
+        const temp_game_index = Math.floor(date.getTime()/(1000*60*60*24));
     },
     view: function(vnode) {
         let name = m(".card", {id: "card_name"}, m(".card-content", {id: "content_name"},
@@ -57,24 +63,9 @@ let app = {
                 let select_element = document.getElementById('composer-select');
                 let current_guess = select_element.form.innerText.split("\n")[0];
                 if (!app.state.past_guess.includes(current_guess) && current_guess != "⨯" && app.state.complete == false) {
-                    let guess_number = app.state.guess_number;
-                    var label = document.getElementById("label" + guess_number);
-                    var label_num = document.getElementById("label_num" + guess_number);
-
-                    // Display labels
-                    label.style.opacity = 1;
-                    label_num.style.opacity = 1;
-
-                    if (Data.complete_name == current_guess) {
-                        label.classList.toggle('correct'); 
-                        label_num.classList.toggle('correct'); 
-                        document.getElementById("content_name").style.opacity = 1;
-                        app.state.complete = true;
-                    }
-
                     // Update game state
                     app.current_guess = current_guess;
-                    app.state.past_guess[guess_number] = current_guess;
+                    app.state.past_guess[app.state.guess_number] = current_guess;
                     app.state.guess_number += 1;
                 }
 
@@ -93,6 +84,14 @@ let app = {
         return m("div", [container, form, container_guesses]);
     },
     onupdate: function(vnode) {
+        const temp_state = JSON.parse(localStorage.getItem("state"));
+        if (app.state.guess_number == 0 && temp_state) {
+            if (temp_state.guess_number > 0 && temp_state.game_id == Data.game_id) {
+                app.state = temp_state;
+                
+            }
+        }
+
         // Initialize Tom Select on the input element
         // once the data has been loaded
         if (Data.composers != 0 && app.data_set == false) {
@@ -105,6 +104,21 @@ let app = {
                 }
             });
             app.data_set = true;
+        }
+
+        // Update labels visibility
+        for (i=0; i < app.state.guess_number; i++ ) {
+            var label = document.getElementById("label" + i);
+            var label_num = document.getElementById("label_num" + i);
+            // Display labels
+            label.style.opacity = 1;
+            label_num.style.opacity = 1;
+            label.innerHTML = app.state.past_guess[i];
+            if (Data.complete_name == app.state.past_guess[i]) {
+                label.classList.add('correct'); 
+                label_num.classList.add('correct'); 
+                app.state.complete = true;
+            }
         }
 
         // Show game clues based on game state
@@ -121,13 +135,15 @@ let app = {
             document.getElementById("content_name").style.opacity = 1;
             app.state.complete = true;
         }
-        if (app.state.complete) {
+        if (app.state.complete && !app.celebrate) {
             confetti({
               particleCount: 100,
               spread: 70,
               origin: { y: 0.6 }
             });
+            app.celebrate = true;
         }
+        app.state.game_id = Data.game_id;
         localStorage.setItem('state', JSON.stringify(app.state));
     }
 }

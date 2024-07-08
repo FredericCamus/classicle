@@ -11,6 +11,7 @@ function get_works(works, n) {
 
 var Data = {
     game_id: 0,
+    game_index: 0,
     composers: [],
     complete_name: "",
     epoch: "",
@@ -32,8 +33,10 @@ var Data = {
                 const data_array = data.split(" ");
                 const date = new Date();
                 const days_since_epoch = Math.floor(date.getTime()/(1000*60*60*24));
-                
-                Data.game_id = parseInt(data_array[days_since_epoch%(365*10)]%220);
+
+                Data.game_index = days_since_epoch;
+
+                Data.game_id = parseInt(data_array[Data.game_index%(data_array.length)]%220);
             });
 
         // Load composer data
@@ -48,11 +51,9 @@ var Data = {
                 // Parse data
                 composers = JSON.parse(data);
 
-                // Pick a random composer
-                rand_id = Math.floor(Math.random() * composers.length);
-                rand_id = composers.length-1;
-                composer = composers[Data.game_id];
-
+                // Get composer using game_id
+                composer = composers[Data.game_id%(composers.length)];
+                
                 // Set list of all composer names
                 Data.composers = composers.map((c) => c.complete_name);
 
@@ -62,6 +63,7 @@ var Data = {
                 Data.birth = composer.birth;
                 Data.portrait = composer.portrait;
                 Data.works = get_works(composer.works, 5);
+
                 m.redraw();
             });
     }
