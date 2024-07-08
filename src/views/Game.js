@@ -13,9 +13,13 @@ let app = {
     },
     current_guess: "",
     data_set: false,
-    oninit: Data.loadList,
+    oninit: function(vnode) {
+        Data.loadList();
+        app.state = JSON.parse(localStorage.getItem("state"));
+        console.log(app.state);
+        m.redraw();
+    },
     view: function(vnode) {
-        console.log(Data.complete_name);
         let name = m(".card", {id: "card_name"}, m(".card-content", {id: "content_name"},
             m("h1", Data.complete_name)));
         let clue_pieces = m(".card", {id: "card_pieces"}, m(".card-content", {id: "content_pieces"}, [
@@ -52,7 +56,7 @@ let app = {
                 // Get select element
                 let select_element = document.getElementById('composer-select');
                 let current_guess = select_element.form.innerText.split("\n")[0];
-                if (!app.state.past_guess.includes(current_guess) && current_guess != "⨯" && app.state.guess_number < 6) {
+                if (!app.state.past_guess.includes(current_guess) && current_guess != "⨯" && app.state.complete == false) {
                     let guess_number = app.state.guess_number;
                     var label = document.getElementById("label" + guess_number);
                     var label_num = document.getElementById("label_num" + guess_number);
@@ -124,6 +128,7 @@ let app = {
               origin: { y: 0.6 }
             });
         }
+        localStorage.setItem('state', JSON.stringify(app.state));
     }
 }
 module.exports = app;

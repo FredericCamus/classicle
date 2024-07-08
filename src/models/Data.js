@@ -29,10 +29,11 @@ var Data = {
             .then(data => {
                 // Pick the game id based on days since UNIX epoch
                 // 10 years worth of game ids are stored in /assets/game_ids.txt
+                const data_array = data.split(" ");
                 const date = new Date();
                 const days_since_epoch = Math.floor(date.getTime()/(1000*60*60*24));
-
-                Data.game_id = parseInt(data[days_since_epoch%(365*10)]%220);
+                
+                Data.game_id = parseInt(data_array[days_since_epoch%(365*10)]%220);
             });
 
         // Load composer data
