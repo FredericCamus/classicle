@@ -6,7 +6,6 @@ const Data = require("../models/Data");
 
 let app = {
     state: {
-        game_index: -1,
         past_guess: [...Array(6).keys()].map(id => ""),
         guess_number: 0,
         complete: false
@@ -21,10 +20,6 @@ let app = {
 
         // Load player history
         app.history = JSON.parse(localStorage.getItem("history")) || [];
-
-        // Calculate current game_index
-        const date = new Date();
-        const temp_game_index = Math.floor(date.getTime()/(1000*60*60*24));
     },
     view: function(vnode) {
         let name = m(".card", {id: "card_name"}, m(".card-content", {id: "content_name"},

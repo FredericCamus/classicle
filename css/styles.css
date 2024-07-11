@@ -4,6 +4,12 @@
     margin: 20px auto;
 }
 
+.container {
+    display: grid;
+    place-content: center;
+    margin: 20px auto;
+}
+
 .container_guesses {
     display: grid;
     place-content: center;
