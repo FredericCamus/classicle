@@ -52,8 +52,6 @@ let app = {
 
         let button = m("button", {"class": "btn btn-primary"}, "🎺 GUESS");
 
-        let container = m(".container", grid);
-
         let form = m("form", {
             onsubmit: function (e) { 
                 // Prevent default
@@ -108,7 +106,7 @@ let app = {
             )
         );
         
-        return m("div", [container, form, container_guesses]);
+        return m("div", [grid, form, container_guesses]);
     },
     onupdate: function(vnode) {
         // Determine whether to use past game state
