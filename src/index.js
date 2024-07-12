@@ -6,7 +6,11 @@ var Layout = require("./views/Layout");
 
 m.route.prefix = "";
 
-const path = window.location.pathname.slice(1) || "/";
+let path = window.location.pathname.slice(1) || "/";
+
+console.log(window.location.pathname);
+
+if (!(path in ["/classicle/", "/", "/stats"]) ) { path = "/"; }
 
 m.route(document.body, path, {
     "/classicle/": {
