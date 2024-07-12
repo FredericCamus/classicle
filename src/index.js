@@ -8,8 +8,6 @@ m.route.prefix = "";
 
 const path = window.location.pathname.slice(1) || "/";
 
-console.log("DEBUG PATHNAME:", window.location.pathname);
-
 m.route(document.body, path, {
     "/classicle/": {
         render: function() {

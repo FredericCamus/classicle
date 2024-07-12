@@ -25,10 +25,10 @@ function max_streak(list) {
     let index = list.length-1;
     while (index > 0) {
         for (i=index; i >= 0; i--) {
+            index = i-1;
             if (list[i] > 0) {
                 streak += 1;
             } else {
-                index = i-1;
                 max_streak = Math.max(max_streak, streak);
                 streak = 0;
                 break;

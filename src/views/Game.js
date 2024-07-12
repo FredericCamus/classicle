@@ -27,7 +27,7 @@ let app = {
         
         let clue_pieces = m(".card", {id: "card_pieces"}, m(".card-content", {id: "content_pieces"}, [
             m("h2", "POPULAR PIECES"),
-            m("ul", m("li", Data.works.map((work) => m("li", work.title))))
+            m("ul", {style: "text-align: left"}, m("li", Data.works.map((work) => m("li", work.title))))
         ]));
 
         let clue_birth = m(".card", {id: "card_birth"}, m(".card-content", {id: "content_birth"},[
