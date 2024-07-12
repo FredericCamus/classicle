@@ -107,6 +107,14 @@ let app = {
         );
         
         return m("div", [grid, form, container_guesses]);
+    },    
+    onremove: function(vnode) {
+        // Delete tom-select instance when changing page
+        if (vnode.state.tomSelectInstance) {
+            vnode.state.tomSelectInstance.destroy();
+            vnode.state.tomSelectInstance = null;
+            app.data_set = false;
+        }
     },
     onupdate: function(vnode) {
         // Determine whether to use past game state
@@ -127,7 +135,7 @@ let app = {
         // Initialize Tom Select on the input element
         // once the data has been loaded
         if (Data.composers != 0 && app.data_set == false) {
-            new t('#composer-select', {
+            vnode.state.tomSelectInstance = new t('#composer-select', {
                 plugins: ['clear_button'],
                 create: false,
                 sortField: {

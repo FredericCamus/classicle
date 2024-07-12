@@ -1,9 +1,3 @@
-.container {
-    display: grid;
-    place-content: center;
-    margin: 20px auto;
-}
-
 .menu {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -79,8 +73,6 @@ label {
 .grid {
     display: grid;
     grid-template-columns: 2fr 1fr;
-    grid-column-start: 1;
-    grid-column-end: 4;
 }
 
 .card {
