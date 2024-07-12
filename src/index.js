@@ -4,10 +4,14 @@ var Game = require("./views/Game");
 var Stats = require("./views/Stats");
 var Layout = require("./views/Layout");
 
-// m.route.prefix = "";
+m.route.prefix = "";
 
-m.route(document.body, "/game", {
-    "/game": {
+const path = window.location.search.slice(1) || "/";
+
+console.log(window.location.search.slice(1) || "/");
+
+m.route(document.body, path, {
+    "/": {
         render: function() {
             return m(Layout, m(Game));
         }
