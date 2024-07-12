@@ -4,7 +4,7 @@ var Game = require("./views/Game");
 var Stats = require("./views/Stats");
 var Layout = require("./views/Layout");
 
-m.route.prefix = "";
+// m.route.prefix = "";
 
 m.route(document.body, "/game", {
     "/game": {
