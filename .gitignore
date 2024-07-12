@@ -7,5 +7,9 @@ node_modules
 # Config files
 package*
 
+# Local serve
+serve.json
+
+generate_random.py
 
 
