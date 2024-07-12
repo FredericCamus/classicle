@@ -28,8 +28,8 @@ function max_streak(list) {
             index = i-1;
             if (list[i] > 0) {
                 streak += 1;
-            } else {
                 max_streak = Math.max(max_streak, streak);
+            } else {
                 streak = 0;
                 break;
             }
