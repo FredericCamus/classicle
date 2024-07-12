@@ -10,7 +10,7 @@ const path = window.location.search.slice(1) || "/";
 
 console.log("DEBUG", window.location.search.slice(1) || "/");
 
-m.route(document.body, path, {
+m.route(document.body, "/classicle", {
     "/classicle": {
         render: function() {
             return m(Layout, m(Game));
