@@ -14,4 +14,4 @@ This app is built with the [Mithril](https://mithril.js.org/) javascript framewo
 
 Here is what an example game looks like.
 
-![](/home/jonah/Documents/classicle/assets/example.gif)
+![](./assets/example.gif)
