@@ -36,14 +36,24 @@ let app = {
                 ]
             ));
 
-        let clue_birth = m(".card", {id: "card_birth"}, m(".card-content", {id: "content_birth"},[
-            m(".period", {style: "float: left; width: 50%;"}, [m("h2", "PERIOD"), m("p", Data.epoch)]),
-            m(".birth", {style: "float: left; width: 50%;"}, [m("h2", "BIRTH"), m("p",Data.birth)])
-        ]));
+        let clue_birth = 
+            m(".card", {id: "card_birth"}, 
+                m(".card-content", {id: "content_birth"},
+                [
+                    m(".period", {style: "float: left; width: 50%;"}, 
+                        [m("h2", "PERIOD"), m("p", Data.epoch)]),
+                    m(".birth", {style: "float: left; width: 50%;"}, 
+                        [m("h2", "BIRTH"), m("p",Data.birth)])
+                ]
+            ));
 
-        let clue_portrait = m(".card", {id: "card_portrait"}, m(".card-content", {id: "content_portrait"}, [
-            m("img", {"src":Data.portrait,"alt":"Composer Image"})
-        ]));
+        let clue_portrait = 
+            m(".card", {id: "card_portrait"}, 
+                m(".card-content", {id: "content_portrait"}, 
+                [
+                    m("img", {"src":Data.portrait,"alt":"Composer Image"})
+                ]
+            ));
 
         let grid = m(".grid", [name, clue_birth, clue_pieces, clue_portrait]);
 
@@ -87,6 +97,8 @@ let app = {
                     if (Data.complete_name == current_guess) {
                         app.history[app.history.length-1] = app.state.guess_number;
                         app.state.complete = true;
+                        let label_num = document.getElementById("label_num" + app.state.guess_number);
+                        label_num.innerHTML = "🎉";
 
                         // Store player history
                         localStorage.setItem('history', JSON.stringify(app.history));
@@ -165,6 +177,7 @@ let app = {
                 label.classList.add('correct'); 
                 label_num.classList.add('correct'); 
                 app.state.complete = true;
+                label_num.innerHTML = "🎉";
             }
         }
 

@@ -9,7 +9,7 @@
         /* display: grid; */
         text-align: center;
         margin: 20px auto;
-        max-width: 60%;
+        max-width: 40%;
     }
 }
 
@@ -83,7 +83,6 @@ label {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: visible;
     transition: transform 0.3s, box-shadow 0.3s;
-    /* place-content: center; */
 }
 
 #card_pieces {
@@ -106,7 +105,7 @@ label {
 }
 
 .card-content {
-    padding: 10px;
+    padding: 15px;
     opacity: 0;
 }
 
@@ -136,8 +135,8 @@ button:hover {
 }
 
 .navicon {
-    padding: 5px;
-    width: 15%;
+    padding: 15px;
+    width: 10%;
     height: auto;
 }
 
@@ -154,4 +153,9 @@ button:hover {
         /* max-width: 30%; */
     }
 
+}
+
+hr {
+    width: 100%;
+    opacity: 20%;
 }

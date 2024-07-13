@@ -7,11 +7,11 @@ module.exports = {
         const stats_icon = m("img.navicon", {src: "./assets/stats.png", alt: "Statistics"});
         return m("main.layout", [
             m("nav.menu", [
-                m(m.route.Link, {href: "/classicle"}, about_icon),
+                m(m.route.Link, {href: "/about"}, about_icon),
                 m(m.route.Link, {href: "/classicle"}, classicle_icon),
                 m(m.route.Link, {href: "/stats"}, stats_icon)
             ]),
-            m("hr", {style: "width: 100%; opacity: 50%;"}),
+            m("hr"),
             m("section", vnode.children)
         ])
     }

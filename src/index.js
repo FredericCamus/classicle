@@ -3,6 +3,7 @@ var m = require("mithril");
 var Game = require("./views/Game");
 var Stats = require("./views/Stats");
 var Layout = require("./views/Layout");
+var About = require("./views/About");
 
 // m.route.prefix = "";
 
@@ -24,6 +25,11 @@ m.route(document.body, path, {
     "/stats": {
         render: function(vnode) {
             return m(Layout, m(Stats))
+        }
+    },
+    "/about": {
+        render: function(vnode) {
+            return m(Layout, m(About))
         }
     },
 })
