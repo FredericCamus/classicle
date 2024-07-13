@@ -59,13 +59,13 @@ let app = {
 
                 // Get select element
                 let select_element = document.getElementById('composer-select');
-                let current_guess = select_element.form.innerText.split("\n")[0];
-
+                let current_guess = Data.composers[parseInt(select_element.value)] || "";
+                
                 // Do not allow:
                 // - Repeat guesses
                 // - Guesses without a valid composer
                 // - Guesses after the game has finished
-                if (!app.state.past_guess.includes(current_guess) && current_guess != "⨯" && !app.state.complete) {
+                if (!app.state.past_guess.includes(current_guess) && current_guess != "" && !app.state.complete) {
                     // Update game state
                     app.state.past_guess[app.state.guess_number] = current_guess;
                     app.state.guess_number += 1;
