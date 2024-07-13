@@ -91,7 +91,7 @@ label {
 }
 
 #card_name {
-    background-color: #ffdc73;
+    background-color: #ffdc73; /* Beige */
 }
 
 #card_birth {
@@ -138,4 +138,15 @@ button:hover {
     background-color: #ffffff; /* Set the background color of the square */
     display: inline-block; /* Ensures the square does not take up a full line */
     margin: auto 20px;
+}
+
+.logo {
+    width: 100%;
+    height: auto;
+}
+
+.navicon {
+    padding: 5px;
+    width: 15%;
+    height: auto;
 }

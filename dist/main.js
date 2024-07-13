@@ -330,7 +330,7 @@ eval("// Imports\nconst m = __webpack_require__(/*! mithril */ \"./node_modules/
   \*****************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("var m = __webpack_require__(/*! mithril */ \"./node_modules/mithril/index.js\")\n\nmodule.exports = {\n    view: function(vnode) {\n        return m(\"main.container1\", [\n            m(\"nav.menu\", [\n                m(m.route.Link, {href: \"/classicle\"}, \"About\"),\n                m(m.route.Link, {href: \"/classicle\"}, \"CLASSICLE\"),\n                m(m.route.Link, {href: \"/stats\"}, \"Stats\")\n            ]),\n            m(\"hr\", {style: \"width: 100%; opacity: 50%;\"}),\n            m(\"section\", vnode.children)\n        ])\n    }\n}\n\n\n//# sourceURL=webpack://mithril_test/./src/views/Layout.js?");
+eval("var m = __webpack_require__(/*! mithril */ \"./node_modules/mithril/index.js\")\n\nmodule.exports = {\n    view: function(vnode) {\n        const about_icon = m(\"img.navicon\", {src: \"/assets/question.png\", alt: \"About\"});\n        const classicle_icon = m(\"img.logo\", {src: \"/assets/logo.png\", alt: \"CLASSICLE\"});\n        const stats_icon = m(\"img.navicon\", {src: \"/assets/stats.png\", alt: \"Statistics\"});\n        return m(\"main.container1\", [\n            m(\"nav.menu\", [\n                m(m.route.Link, {href: \"/classicle\"}, about_icon),\n                m(m.route.Link, {href: \"/classicle\"}, classicle_icon),\n                m(m.route.Link, {href: \"/stats\"}, stats_icon)\n            ]),\n            m(\"hr\", {style: \"width: 100%; opacity: 50%;\"}),\n            m(\"section\", vnode.children)\n        ])\n    }\n}\n\n\n//# sourceURL=webpack://mithril_test/./src/views/Layout.js?");
 
 /***/ }),
 
