@@ -54,7 +54,7 @@ let app = {
         const sum_all = app.dist.slice(0).reduce((acc, i) => acc+i, 0);
         
         // Statistics
-        const win_rate = Math.round(100*(app.dist[0]/sum_all), 2) || 0;
+        const win_rate = Math.round(100*(sum_wins/sum_all), 2) || 0;
         const losses = sum_all - sum_wins;
         const streak = get_streak(app.hist);
         const m_streak = max_streak(app.hist);
