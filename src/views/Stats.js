@@ -50,6 +50,8 @@ let app = {
 
     },
     view: function(vnode) {
+        const part0 = 
+                m(m.route.Link, {href: "/classicle", style: "text-align: left"}, m("p", "◄ Back"));
         const sum_wins = app.dist.slice(1).reduce((acc, i) => acc+i, 0);
         const sum_all = app.dist.slice(0).reduce((acc, i) => acc+i, 0);
         
@@ -90,7 +92,7 @@ let app = {
             )
         ));
 
-        return m("div", [title_stat, list_stat, title_dist, list_dist]);
+        return m("div", [part0, title_stat, list_stat, title_dist, list_dist]);
     }
 }
 module.exports = app;

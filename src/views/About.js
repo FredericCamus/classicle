@@ -5,7 +5,7 @@ let app = {
     view: function(vnode) {
         const hr = m("hr");
         const part0 = 
-                m(m.route.Link, {href: "/classicle"}, m("p", "<- back"));
+                m(m.route.Link, {href: "/classicle"}, m("p", "◄ Back"));
         const part1 = 
             [
                 m("h1", "How to play"), 
@@ -34,7 +34,7 @@ let app = {
             ];
 
 
-        return m("div", {style: "text-align: left"}, [part1, hr, part2, hr]);
+        return m("div", {style: "text-align: left"}, [part0, part1, hr, part2, hr]);
     }
 }
 
