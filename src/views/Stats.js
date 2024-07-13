@@ -85,7 +85,7 @@ let app = {
         const list_dist = m("ol", wins_dist.map(n => 
             m(
                 "li.container2", 
-                {style: `width: ${(n/sum_wins*max_elem)*50}%;`}, 
+                {style: `width: ${(n/max_elem)*80}%;`}, 
                 n
             )
         ));
