@@ -4,15 +4,14 @@
     text-align: center;
 }
 
-.container1 {
-    font-weight: bold;
-    display: grid;
+.layout {
+    /* display: grid; */
     text-align: center;
     margin: 20px auto;
     max-width: 30%;
 }
 
-.container2 { 
+.dist_block { 
     background-color: #ffdc73;
     text-align: right;
     min-width: 3%;
@@ -149,4 +148,10 @@ button:hover {
     padding: 5px;
     width: 15%;
     height: auto;
+}
+@media screen and (max-width: 800px) {
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
 }

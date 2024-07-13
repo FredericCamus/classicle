@@ -84,14 +84,13 @@ let app = {
         const title_dist = m("h3", "Guess Distribution");
         const list_dist = m("ol", wins_dist.map(n => 
             m(
-                "li.container2", 
+                "li.dist_block", 
                 {style: `width: ${(n/max_elem)*80}%;`}, 
                 n
             )
         ));
 
-        const container1 = m("div", [title_stat, list_stat, title_dist, list_dist]);
-        return container1;
+        return m("div", [title_stat, list_stat, title_dist, list_dist]);
     }
 }
 module.exports = app;
