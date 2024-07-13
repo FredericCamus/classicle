@@ -22,19 +22,23 @@ let app = {
         app.history = JSON.parse(localStorage.getItem("history")) || [];
     },
     view: function(vnode) {
-        let name = m(".card", {id: "card_name"}, m(".card-content", {id: "content_name"},
-            m("h1", Data.complete_name)));
+        let name = 
+            m(".card", {id: "card_name", style: "place-content: center"}, 
+                m(".card-content", {id: "content_name"}, m("h1", Data.complete_name)));
         
-        let clue_pieces = m(".card", {id: "card_pieces"}, m(".card-content", {id: "content_pieces"}, [
-            m("h2", "POPULAR PIECES"),
-            m("ul", {style: "text-align: left"}, m("li", Data.works.map((work) => m("li", work.title))))
-        ]));
+        let clue_pieces = 
+            m(".card", {id: "card_pieces", style: "place-content: center"}, 
+                m(".card-content", {id: "content_pieces"}, 
+                [
+                    m("h1", "POPULAR PIECES"),
+                    m("ul", {style: "text-align: left"}, 
+                        m("li", Data.works.map((work) => m("li", work.title))))
+                ]
+            ));
 
         let clue_birth = m(".card", {id: "card_birth"}, m(".card-content", {id: "content_birth"},[
-            m("h2", "PERIOD"),
-            m("p", Data.epoch),
-            m("h2", "BIRTH"),
-            m("p",Data.birth)
+            m(".period", {style: "float: left; width: 50%;"}, [m("h2", "PERIOD"), m("p", Data.epoch)]),
+            m(".birth", {style: "float: left; width: 50%;"}, [m("h2", "BIRTH"), m("p",Data.birth)])
         ]));
 
         let clue_portrait = m(".card", {id: "card_portrait"}, m(".card-content", {id: "content_portrait"}, [

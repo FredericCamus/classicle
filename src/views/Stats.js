@@ -61,7 +61,7 @@ let app = {
 
         // Display
         const title_stat = m("h3", "Statistics");
-        const list_stat = m(".container3", 
+        const list_stat = m(".stats_container", 
             [
                 m("h3.stat_title", "Played:"),
                 m("h3.stat_content", `${sum_all}`),

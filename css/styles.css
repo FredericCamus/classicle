@@ -4,11 +4,13 @@
     text-align: center;
 }
 
-.layout {
-    /* display: grid; */
-    text-align: center;
-    margin: 20px auto;
-    max-width: 30%;
+@media screen and (min-width: 800px) {
+    .layout {
+        /* display: grid; */
+        text-align: center;
+        margin: 20px auto;
+        max-width: 60%;
+    }
 }
 
 .dist_block { 
@@ -19,7 +21,7 @@
     margin: 10px 0px;
 }
 
-.container3 { 
+.stats_container { 
     display: grid;
     grid-template-columns: 1fr 1fr;
     padding: 10px 10px;
@@ -81,7 +83,7 @@ label {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: visible;
     transition: transform 0.3s, box-shadow 0.3s;
-    place-content: center;
+    /* place-content: center; */
 }
 
 #card_pieces {
@@ -105,7 +107,6 @@ label {
 
 .card-content {
     padding: 10px;
-    place-content: center;
     opacity: 0;
 }
 
@@ -129,16 +130,6 @@ button:hover {
     background: #e8e8e8;
 }
 
-.box {
-    width: 30px; /* Set the width of the square */
-    height: 30px; /* Set the height of the square */
-    border: 1px solid black; /* Optional: Add a border */
-    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
-    background-color: #ffffff; /* Set the background color of the square */
-    display: inline-block; /* Ensures the square does not take up a full line */
-    margin: auto 20px;
-}
-
 .logo {
     width: 100%;
     height: auto;
@@ -149,9 +140,18 @@ button:hover {
     width: 15%;
     height: auto;
 }
+
 @media screen and (max-width: 800px) {
-  .grid {
+    .grid {
     display: grid;
     grid-template-columns: 1fr;
-  }
+    }
+    .layout {
+        /* display: grid; */
+        text-align: center;
+        margin: 20px auto;
+        width: 100%;
+        /* max-width: 30%; */
+    }
+
 }
